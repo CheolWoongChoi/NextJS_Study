@@ -10,6 +10,8 @@ export default function Gnb() {
     activeItem = 'home';
   } else if (router.pathname === '/about') {
     activeItem = 'about';
+  } else if (router.pathname === '/admin') {
+    activeItem = 'admin';
   }
 
   const goLink = useCallback((e, data) => {
@@ -17,8 +19,8 @@ export default function Gnb() {
       router.push('/');
     } else if (data.name === 'about') {
       router.push('/about');
-    } else if (data.name === '') {
-      
+    } else if (data.name === 'admin') {
+      router.push('/admin'); 
     }
   }, []);
 
@@ -35,9 +37,16 @@ export default function Gnb() {
         onClick={goLink}
       />
       <Menu.Item
-        name='friends'
-        active={activeItem === 'friends'}
+        name='Contact Us'
+        active={activeItem === 'contact'}
         onClick={goLink}
+      />
+      <Menu.Item
+        name='admin'
+        active={activeItem === 'admin'}
+        onClick={() => {
+          router.push('/admin');
+        }}
       />
     </Menu>
   );
